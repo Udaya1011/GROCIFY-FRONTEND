@@ -4,7 +4,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 const SmartPacks = () => {
-    const { products, cartItems, setCartItems, navigate, addToCart, toggleWishlist, wishlist } = useAppContext();
+    const { products, cartItems, setCartItems, navigate, addToCart, toggleWishlist, wishlist, user } = useAppContext();
     const [bundles, setBundles] = useState([]);
     const [smartOffers, setSmartOffers] = useState([]);
 
@@ -21,19 +21,25 @@ const SmartPacks = () => {
         };
 
         const fetchSmartOffers = async () => {
+            if (!user) return; // Only fetch if the user is logged in
             try {
                 const { data } = await axios.get('/api/offer/smart');
                 if (data.success) {
                     setSmartOffers(data.offers);
                 }
             } catch (error) {
-                console.error("Error fetching smart offers:", error);
+                if (error.response && error.response.status === 401) {
+                    // Ignore 401 Unauthorized for smart offers (normal for guests)
+                } else {
+                    console.error("Error fetching smart offers:", error);
+                }
             }
         };
 
         fetchBundles();
         fetchSmartOffers();
-    }, []);
+    }, [user]); // Re-run if user login state changes
+
 
     const addBundleToCart = (bundle) => {
         let addedCount = 0;
