@@ -216,7 +216,7 @@ const Cart = () => {
               >
                 <img
                   className="max-w-full h-full object-cover"
-                  src={product.image[0].startsWith('http') || product.image[0].startsWith('data:') || product.image[0].startsWith('/') ? product.image[0] : `${import.meta.env.VITE_BACKEND_URL || (import.meta.env.DEV ? 'http://localhost:5000' : 'https://grocify-backend-1.onrender.com')}/images/${product.image[0]}`}
+                  src={product.image[0].startsWith('http') || product.image[0].startsWith('data:') || product.image[0].startsWith('/') ? product.image[0] : `${import.meta.env.VITE_BACKEND_URL || (window.location.hostname.includes('onrender.com') ? 'https://grocify-backend-1.onrender.com' : 'http://localhost:5000')}/images/${product.image[0]}`}
                   alt={product.name}
                 />
               </div >

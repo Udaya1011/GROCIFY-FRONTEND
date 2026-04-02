@@ -41,7 +41,7 @@ const Inventory = () => {
                         {products.map((product) => (
                             <tr key={product._id} className="hover:bg-gray-50 transition-colors">
                                 <td className="px-6 py-4 flex items-center gap-3 text-sm font-medium text-gray-900">
-                                    <img src={`${import.meta.env.VITE_BACKEND_URL || (import.meta.env.DEV ? 'http://localhost:5000' : 'https://grocify-backend-1.onrender.com')}/images/${product.image[0]}`} className="w-10 h-10 rounded object-cover" alt="" />
+                                    <img src={`${import.meta.env.VITE_BACKEND_URL || (window.location.hostname.includes('onrender.com') ? 'https://grocify-backend-1.onrender.com' : 'http://localhost:5000')}/images/${product.image[0]}`} className="w-10 h-10 rounded object-cover" alt="" />
                                     {product.name}
                                 </td>
                                 <td className="px-6 py-4 text-sm text-gray-500">{product.category}</td>

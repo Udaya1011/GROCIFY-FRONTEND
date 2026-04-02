@@ -4,7 +4,7 @@ import { categories, dummyProducts, noodlesPastaProducts, ketchupDipsSpreadsProd
 import toast from "react-hot-toast";
 import axios from "axios";
 axios.defaults.withCredentials = true;
-axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL || (import.meta.env.DEV ? "http://localhost:5000" : "https://grocify-backend-1.onrender.com");
+axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URL || (window.location.hostname.includes('onrender.com') ? "https://grocify-backend-1.onrender.com" : "http://localhost:5000");
 export const AppContext = createContext(null);
 
 export const AppContextProvider = ({ children }) => {

@@ -141,7 +141,7 @@ const MyOrders = () => {
                 <div className="flex items-center mb-4 md:mb-0">
                   <div className="p-4 rounded-lg">
                     <img
-                      src={item.product?.image ? `${import.meta.env.VITE_BACKEND_URL || (import.meta.env.DEV ? 'http://localhost:5000' : 'https://grocify-backend-1.onrender.com')}/images/${item.product.image[0]}` : assets.box_icon}
+                      src={item.product?.image ? `${import.meta.env.VITE_BACKEND_URL || (window.location.hostname.includes('onrender.com') ? 'https://grocify-backend-1.onrender.com' : 'http://localhost:5000')}/images/${item.product.image[0]}` : assets.box_icon}
                       alt=""
                       className="w-16 h-16 object-cover rounded"
                     />
