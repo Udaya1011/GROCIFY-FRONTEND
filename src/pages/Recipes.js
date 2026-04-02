@@ -86,7 +86,7 @@ const Recipes = () => {
                         <div className="aspect-w-16 aspect-h-9 w-full bg-gray-200 h-48 flex items-center justify-center">
                             {recipe.image ? (
                                 <img
-                                    src={`http://localhost:5000/images/${recipe.image}`}
+                                    src={`${import.meta.env.VITE_BACKEND_URL || (import.meta.env.DEV ? 'http://localhost:5000' : 'https://grocify-backend-1.onrender.com')}/images/${recipe.image}`}
                                     alt={recipe.name}
                                     className="w-full h-full object-cover"
                                     onError={(e) => {

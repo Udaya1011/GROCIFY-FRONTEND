@@ -87,7 +87,7 @@ const ProductCard = ({ product }) => {
                 product.image[0].startsWith('data:') ||
                 product.image[0].startsWith('/')
                 ? product.image[0]
-                : `${import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000'}/images/${product.image[0]}`
+                : `${import.meta.env.VITE_BACKEND_URL || (import.meta.env.DEV ? 'http://localhost:5000' : 'https://grocify-backend-1.onrender.com')}/images/${product.image[0]}`
             }
             alt={product.name}
           />

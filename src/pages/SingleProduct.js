@@ -108,7 +108,7 @@ const SingleProduct = () => {
                   className="border max-w-24 border-gray-500/30 rounded overflow-hidden cursor-pointer"
                 >
                   <img
-                    src={image.startsWith('http') || image.startsWith('data:') || image.startsWith('/') ? image : `http://localhost:5000/images/${image}`}
+                    src={image.startsWith('http') || image.startsWith('data:') || image.startsWith('/') ? image : `${import.meta.env.VITE_BACKEND_URL || (import.meta.env.DEV ? 'http://localhost:5000' : 'https://grocify-backend-1.onrender.com')}/images/${image}`}
                     alt={`Thumbnail ${index + 1}`}
                   />
                 </div >
@@ -117,7 +117,7 @@ const SingleProduct = () => {
 
             <div className="border border-gray-500/30 max-w-100 rounded overflow-hidden">
               <img
-                src={thumbnail && (thumbnail.startsWith('http') || thumbnail.startsWith('data:') || thumbnail.startsWith('/') ? thumbnail : `http://localhost:5000/images/${thumbnail}`)}
+                src={thumbnail && (thumbnail.startsWith('http') || thumbnail.startsWith('data:') || thumbnail.startsWith('/') ? thumbnail : `${import.meta.env.VITE_BACKEND_URL || (import.meta.env.DEV ? 'http://localhost:5000' : 'https://grocify-backend-1.onrender.com')}/images/${thumbnail}`)}
                 alt="Selected product"
               />
             </div>
